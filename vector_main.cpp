@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-#include "allocate.h"
+#include "logging_allocator.h"
 constexpr std::string_view allocate_tag = "allocate";
 constexpr std::string_view deallocate_tag = "deallocate";
 

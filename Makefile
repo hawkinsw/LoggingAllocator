@@ -3,13 +3,13 @@ CC=g++
 
 all: string_test vector_test
 
-string_test: string_main.cpp alloc.h
+string_test: string_main.cpp logging_allocator.h
 	$(CC) -o string_test string_main.cpp -g -O0 -std=c++17
 
-vector_test: vector_main.cpp alloc.h
+vector_test: vector_main.cpp logging_allocator.h
 	$(CC) -o vector_test vector_main.cpp -g -O0 -std=c++17
 
-alloc.h:
+logging_allocator.h:
 	true
 
 clean:
