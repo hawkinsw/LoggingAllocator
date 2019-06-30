@@ -11,19 +11,13 @@ public:
 	template<class O> struct rebind { typedef LoggingAllocator<O, Allocator, allocate_tag, deallocate_tag> other; };
 	T* allocate(std::size_t n) {
 		T* ret_ptr = std::allocator_traits<Allocator>::allocate(mAllocator, n);
-		std::cerr << allocate_tag << ": 0x" << std::hex << (unsigned long long) ret_ptr << ", " << std::dec << n << std::endl;
+		std::cerr << allocate_tag << ": 0x" << std::hex << (void*)ret_ptr << ", " << std::dec << n << std::endl;
 		return ret_ptr;
 	}
 	void deallocate(T* p, std::size_t n) {
-		std::cerr << deallocate_tag << ": 0x" << std::hex << (unsigned long long)p << ", " << std::dec << n << std::endl;
+		std::cerr << deallocate_tag << ": 0x" << std::hex << (void*)p << ", " << std::dec << n << std::endl;
 		return std::allocator_traits<Allocator>::deallocate(mAllocator, p, n);
 	}	
-/*
-	using pointer = T*;
-	using const_pointer = const T*;
-	using reference = T&;
-	using const_reference const T&;
-*/
 private:
 	Allocator mAllocator;
 };
